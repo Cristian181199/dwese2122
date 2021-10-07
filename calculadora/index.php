@@ -11,10 +11,8 @@
 
     <?php
 
-    function filtrar_numero($par)
+    function filtrar_numero(string $par, array &$error): ?string
     {
-        global $error;
-
         $val = null;
 
         if (isset($_GET[$par])) {
@@ -29,9 +27,12 @@
         return $val;
     }
 
-    function filtrar_opciones($par, $opciones)
+    function filtrar_opciones(
+        string $par, 
+        array $opciones, 
+        array &$error
+    ): ?string
     {
-        global $error;
 
         $val = null;
 
@@ -47,7 +48,7 @@
         return $val;
     }
 
-    function mostrar_errores($error)
+    function mostrar_errores(array $error): void
     {
         foreach ($error as $err): ?>
             <p>Error: <?= $err ?></p>
@@ -55,7 +56,11 @@
         endforeach;
     }
 
-    function calcular($x, $y, $oper)
+    function calcular(
+        int|float|string $x, 
+        int|float|string $y,   
+        string $oper
+    ): int|float|null
     {
         switch ($oper) {
             case 'suma':
@@ -84,9 +89,12 @@
 
     $error = [];
 
-    $x = filtrar_numero('x');
-    $y = filtrar_numero('y');
-    $oper = filtrar_opciones('oper', ['suma', 'resta', 'mult', 'div']);
+    $x = filtrar_numero('x', $error);
+    $y = filtrar_numero('y', $error);
+    $oper = filtrar_opciones(
+        'oper', 
+        ['suma', 'resta', 'mult', 'div'], 
+        $error);
 
     mostrar_errores($error);
     ?>
