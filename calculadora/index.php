@@ -10,7 +10,18 @@
     <h1>Prueba de recogida de datos</h1>
 
     <?php
-
+    
+    /**
+     * Filtra un parametro recibido mediante GET, lo trimea y
+     * comprueba si es un numero (en caso contrario devuelve null).
+     * 
+     * Actualiza el array de errores en caso necesario.
+     *
+     * @param  string           $par    El nombre del parametro
+     * @param  array            $error  El array de errores
+     * @return string|null              El valor del parametro o null si no es
+     *                                  un numero
+     */
     function filtrar_numero(string $par, array &$error): ?string
     {
         $val = null;
@@ -26,7 +37,13 @@
 
         return $val;
     }
-
+    
+    
+    /**
+     * filtrar_opciones
+     *
+     * @return void
+     */
     function filtrar_opciones(
         string $par, 
         array $opciones, 
@@ -47,7 +64,13 @@
 
         return $val;
     }
-
+    
+    /**
+     * mostrar_errores
+     *
+     * @param  mixed $error
+     * @return void
+     */
     function mostrar_errores(array $error): void
     {
         foreach ($error as $err): ?>
