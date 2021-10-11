@@ -7,8 +7,8 @@
     <title>Calculadora</title>
 </head>
 <body>
-    <?php require 'auxiliar.php'; 
-        $error = [];
+    <?php require 'auxiliar.php'; // Modificar calculadora para que el
+        $error = [];              // resultado sea el primer operando (acumulador)
 
         $x = filtrar_numero('x', $error);
         $y = filtrar_numero('y', $error);
