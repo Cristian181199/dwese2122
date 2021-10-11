@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php require 'auxiliar.php'; ?>
-    <form action="calcular.php" method="GET">
+    <form action="" method="GET">
         <div>
             <label for="op1">Primer operando:</label>
             <input id="op1" type="number" name="x" size="10">
@@ -29,5 +29,21 @@
             <button type="submit">Operar</button>
         </div>
     </form>
+
+    <?php
+        $error = [];
+
+        $x = filtrar_numero('x', $error);
+        $y = filtrar_numero('y', $error);
+        $oper = filtrar_opciones('oper', OPER, $error);
+
+        mostrar_errores($error);
+
+        if (isset($x, $y, $oper)):
+            if (empty($error)):
+            $res = calcular($x, $y, $oper) ?>
+            <p>El resultado es <?= $res ?></p>
+        <?php endif ?>
+        <?php endif ?>
 </body>
 </html>

@@ -19,11 +19,11 @@ function filtrar_numero(string $par, array &$error): ?string
 
     if (isset($_GET[$par])) {
         $val = trim($_GET[$par]);
-        if (!is_numeric($val)) {
+        if ($val === '') {
+            $error[] = "El parámetro $par es obligatorio.";
+        } elseif (!is_numeric($val)) {
             $error[] = "El parámetro $par no es correcto.";
         }
-    } else {
-        $error[] = "Falta el parámetro $par.";
     }
 
     return $val;
@@ -55,8 +55,6 @@ function filtrar_opciones(
         if (!in_array($val, $opciones)) {
             $error[] = "El parámetro $par no es correcto.";
         }
-    } else {
-        $error[] = "Falta el parámetro $par.";
     }
 
     return $val;
