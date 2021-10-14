@@ -1,6 +1,7 @@
 <?php
 
-function filtrar_nombre_apellido ($par, &$error) {
+function filtrar_nombre_apellido($par, &$error)
+{
     $val = null;
 
     if (isset($_GET[$par])) {
@@ -15,7 +16,8 @@ function filtrar_nombre_apellido ($par, &$error) {
     return $val;
 }
 
-function filtrar_fecha ($par, &$error) {
+function filtrar_fecha($par, &$error)
+{
     $val = null;
 
     if (isset($_GET[$par])) {
@@ -23,11 +25,13 @@ function filtrar_fecha ($par, &$error) {
         if ($val === '') {
             $error[] = "El parámetro $par es obligatorio.";
         } else {
-            $fecha = explode("-", $par);
-            var_dump($fecha);
-            //$ano = $fecha[0];
-            //$mes = $fecha[1];
-            //$dia = $fecha[2];
+            $fecha = explode('-', $val);
+            if (count($fecha) == 3) {
+                [$a, $m, $d] = $fecha;
+            }
+            if (!isset($a, $m, $d) || !checkdate($m, $d, $a)) {
+                $error[] = "El parámetro $par contiene una fecha incorrecta";
+            }
         }
     }
 
@@ -36,19 +40,17 @@ function filtrar_fecha ($par, &$error) {
 
 function mostrar_errores(array $error): void
 {
-    foreach ($error as $err): ?>
+    foreach ($error as $err) : ?>
         <p>Error: <?= $err ?></p>
-    <?php
+<?php
     endforeach;
 }
 
-function calcular ($par) {
+function calcular($par)
+{
     $fecha_actual = new DateTime();
 
-    var_dump($par);
+    $val = $fecha_actual->diff(new DateTime($par))->y;
 
-    //$ano_actual= $fecha_actual->format("Y");
-
-    //return $ano_actual - $ano_nacimiento;
-
+    return $val;
 }
