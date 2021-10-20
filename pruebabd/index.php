@@ -19,7 +19,7 @@
 
     //$keyword = filtrar_keyword('keyword', $error);
 
-    $resultados = find_depart($pdo, 'Con');
+    $resultados = find_depart($pdo, 'con');
 
 
     $sent = $pdo->query(
@@ -46,21 +46,26 @@
 
     <h2>Busca departamento por nombre</h2>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>LOCALIDAD</th>
-        </tr>
-        <?php foreach ($resultados as $resultado) : ?>
+    <?php if ($resultados) : ?>
+        <table>
             <tr>
-                <td> <?= $resultado['id'] ?> </td>
-                <td> <?= $resultado['nombre'] ?> </td>
-                <td> <?= $resultado['localidad'] ?> </td>
+                <th>ID</th>
+                <th>NOMBRE</th>
+                <th>LOCALIDAD</th>
             </tr>
-        <?php endforeach ?>
-    </table>
+            <?php foreach ($resultados as $resultado) : ?>
+                <tr>
+                    <td> <?= $resultado['id'] ?> </td>
+                    <td> <?= $resultado['nombre'] ?> </td>
+                    <td> <?= $resultado['localidad'] ?> </td>
+                </tr>
+            <?php endforeach ?>
+        </table>
 
+    <?php else : ?>
+        <p>No se ha encontrado ningun departamento con ese nombre.</p>
+
+    <?php endif ?>
 
 </body>
 
