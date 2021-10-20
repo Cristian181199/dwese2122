@@ -1,6 +1,8 @@
 <?php
 
-$pdo = new PDO('pgsql:host=localhost;dbname=prueba', 'prueba', 'prueba');
+
+$pdo = require 'connect.php';
+
 
 $sent = $pdo->query(
     'SELECT * 
