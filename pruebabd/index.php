@@ -1,72 +1,59 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mostrar datos en tabla</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
 </head>
 
 <body>
     <?php
     require 'auxiliar.php';
 
-    $pdo = require 'connect.php';
-
-    $error = [];
-
-    //$keyword = filtrar_keyword('keyword', $error);
-
-    $resultados = find_depart($pdo, 'con');
-
-
-    $sent = $pdo->query(
-        'SELECT * 
-            FROM depart'
-    );
+    $pdo = conectar();
+    $sent1 = $pdo->query('SELECT * FROM depart');
+    $sent2 = $pdo->query('SELECT * FROM emple');
     ?>
-    <h1>Tabla DEPART</h1>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>NOMBRE</th>
-            <th>LOCALIDAD</th>
-        </tr>
-        <?php foreach ($sent as $fila) : ?>
-            <tr>
-                <td> <?= $fila['id'] ?> </td>
-                <td> <?= $fila['nombre'] ?> </td>
-                <td> <?= $fila['localidad'] ?> </td>
-            </tr>
-        <?php endforeach ?>
-    </table>
-
-    <h2>Busca departamento por nombre</h2>
-
-    <?php if ($resultados) : ?>
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>NOMBRE</th>
-                <th>LOCALIDAD</th>
-            </tr>
-            <?php foreach ($resultados as $resultado) : ?>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Localidad</th>
+        </thead>
+        <tbody>
+            <?php foreach ($sent1 as $fila) : ?>
                 <tr>
-                    <td> <?= $resultado['id'] ?> </td>
-                    <td> <?= $resultado['nombre'] ?> </td>
-                    <td> <?= $resultado['localidad'] ?> </td>
+                    <td><?= $fila['id'] ?></td>
+                    <td><?= $fila['denominacion'] ?></td>
+                    <td><?= $fila['localidad'] ?></td>
                 </tr>
             <?php endforeach ?>
-        </table>
-
-    <?php else : ?>
-        <p>No se ha encontrado ningun departamento con ese nombre.</p>
-
-    <?php endif ?>
-
+        </tbody>
+    </table>
+    <hr>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Fecha Alta</th>
+            <th>Salario</th>
+            <th>Depart ID</th>
+        </thead>
+        <tbody>
+            <?php foreach ($sent2 as $fila) : ?>
+                <tr>
+                    <td><?= $fila['id'] ?></td>
+                    <td><?= $fila['nombre'] ?></td>
+                    <td><?= $fila['fecha_alt'] ?></td>
+                    <td><?= $fila['salario'] ?></td>
+                    <td><?= $fila['depart_id'] ?></td>
+                </tr>
+            <?php endforeach ?>
+        </tbody>
+    </table>
 </body>
 
 </html>

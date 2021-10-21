@@ -1,5 +1,19 @@
 <?php
 
+function conectar(): \PDO
+{
+    try {
+        return new PDO(
+            'pgsql:host=localhost;dbname=prueba',
+            'prueba',
+            'prueba',
+            [PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION]
+        );
+    } catch (PDOException $e) {
+        echo 'Fallo al conectar con la base de datos: ' . $e->getMessage();
+    }
+}
+
 function find_depart(\PDO $pdo, string $keyword): array
 {
     $pattern = '%' . $keyword . '%';
