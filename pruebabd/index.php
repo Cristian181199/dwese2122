@@ -17,39 +17,61 @@
                           FROM emple e
                           LEFT JOIN depart d
                           ON e.depart_id = d.id');
-    $sent2 = $pdo->query('SELECT count(*) as num_filas FROM emple e
+    $sent2 = $pdo->query('SELECT count(*) as num_filas 
+                          FROM emple e
                           LEFT JOIN depart d
                           ON e.depart_id = d.id')->fetchColumn();
+
+    $keyword = isset($_GET['name']) ? trim($_GET['name']) : null;
+
     ?>
-    <table border="1">
-        <thead>
-            <th>Nombre</th>
-            <th>Fecha Alta</th>
-            <th>Salario</th>
-            <th>Denominacion</th>
-            <th>Localidad</th>
-        </thead>
-        <tbody>
-            <?php foreach ($sent1 as $fila) : ?>
+
+
+    <form action="" method="get">
+        <div>
+            <label for="name">Nombre: </label>
+            <input type="text" name="name" id="name">
+        </div>
+
+        <button type="submit">Buscar</button>
+    </form>
+
+    <?php if (isset($keyword)): ?>
+        <table border="1">
+            <thead>
+                <th>Nombre</th>
+                <th>Fecha Alta</th>
+                <th>Salario</th>
+                <th>Denominacion</th>
+                <th>Localidad</th>
+            </thead>
+            <tbody>
+                <?php foreach ($sent1 as $fila) : ?>
+                    <tr>
+
+                        <td><?= $fila['nombre'] ?></td>
+                        <td><?= $fila['fecha_alt'] ?></td>
+                        <td><?= $fila['salario'] ?></td>
+                        <td><?= $fila['denominacion'] ?></td>
+                        <td><?= $fila['localidad'] ?></td>
+
+                    </tr>
+                <?php endforeach ?>
+
+            </tbody>
+            <tfoot>
                 <tr>
-
-                    <td><?= $fila['nombre'] ?></td>
-                    <td><?= $fila['fecha_alt'] ?></td>
-                    <td><?= $fila['salario'] ?></td>
-                    <td><?= $fila['denominacion'] ?></td>
-                    <td><?= $fila['localidad'] ?></td>
-
+                <th>Total</th>
+                <th><?= $sent2?></th>
                 </tr>
-            <?php endforeach ?>
+            </tfoot>
+        </table>
+    <?php else:?>
 
-        </tbody>
-        <tfoot>
-            <tr>
-            <th>Total</th>
-            <th><?= $sent2?></th>
-            </tr>
-        </tfoot>
-    </table>
+    <?php endif ?>
+
+
+    
 </body>
 
 </html>
