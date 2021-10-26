@@ -20,12 +20,6 @@
     $salario = filtrar_salario_post('salario', $error);
     $departamento = (isset($_POST['depart_id'])) ? trim($_POST['depart_id']) : null;
 
-
-    var_dump($nombre);
-    var_dump($fecha_alt);
-    var_dump($salario);
-    var_dump($departamento);
-
     ?>
 
 
