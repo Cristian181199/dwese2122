@@ -27,3 +27,58 @@ function find_depart(\PDO $pdo, string $keyword): array
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function filtrar_nombre_post(string $par, array &$error): ?string
+{
+    $val = null;
+
+    if (isset($_POST[$par])) {
+        $val = trim($_POST[$par]);
+        if ($val === '') {
+            $error[] = "El parámetro $par es obligatorio.";
+        } elseif (!is_string($val)) {
+            $error[] = "El parámetro $par no es correcto.";
+        }
+    }
+
+    return $val;
+}
+
+function filtrar_fecha_post($par, &$error)
+{
+    $val = null;
+
+    if (isset($_POST[$par])) {
+        $val = trim($_POST[$par]);
+        $fecha = explode('-', $val);
+        if (count($fecha) == 3) {
+            [$a, $m, $d] = $fecha;
+        }
+        if (!isset($a, $m, $d) || !checkdate($m, $d, $a)) {
+            $error[] = "El parámetro $par contiene una fecha incorrecta";
+        }
+    }
+
+    return $val;
+}
+
+function filtrar_salario_post(string $par, array &$error)
+{
+    $val = null;
+
+    if (isset($_POST[$par])) {
+        $val = trim($_POST[$par]);
+        if (!is_numeric($val)) {
+            $error[] = "El parámetro $par no es correcto.";
+        }
+    }
+    return $val;
+}
+
+function mostrar_errores(array $error): void
+{
+    foreach ($error as $err) : ?>
+        <p>Error: <?= $err ?></p>
+<?php
+    endforeach;
+}

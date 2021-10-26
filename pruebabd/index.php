@@ -92,6 +92,9 @@
                                 <input type="hidden" name="id" value="<?= $fila['id'] ?>">
                                 <button type="submit">Borrar</button>
                             </form>
+                            <form action="crear.php" method="GET">
+                                <button type="submit">Crear</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach ?>

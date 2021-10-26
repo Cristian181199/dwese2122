@@ -35,10 +35,10 @@
             </div>
         </form>
 
-        <?php mostrar_errores($error); ?>
+        <?php
+        mostrar_errores($error);
 
-
-        <?php if (empty($error)) : ?>
+        if (empty($error)) : ?>
             <p>La edad es: <?= calcular($fecha) ?></p>
         <?php endif ?>
 
