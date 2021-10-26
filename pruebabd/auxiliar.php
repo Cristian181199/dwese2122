@@ -59,6 +59,7 @@ function filtrar_fecha_post($par, &$error)
         }
     }
 
+
     return $val;
 }
 
@@ -68,6 +69,7 @@ function filtrar_salario_post(string $par, array &$error)
 
     if (isset($_POST[$par])) {
         $val = trim($_POST[$par]);
+
         if (!is_numeric($val)) {
             $error[] = "El parámetro $par no es correcto.";
         }

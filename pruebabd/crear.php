@@ -38,7 +38,7 @@
 
         <div>
             <label for="salario">Salario: </label>
-            <input type="number" name="salario" id="salario" value="<?= $salario ?>">
+            <input type="text" name="salario" id="salario" value="<?= $salario ?>">
         </div>
 
         <div>
@@ -54,11 +54,11 @@
 
         <div>
             <button type="submit">Crear</button>
+            <button type="submit"><a href="index.php">Volver</a></button>
         </div>
     </form>
 
     <?php
-
 
     if (empty($error)) {
         if (ctype_digit($departamento) && mb_strlen($departamento) === 1) {
@@ -87,9 +87,6 @@
         header('Location: index.php');
         return;
     }
-
-
-
     ?>
 </body>
 
