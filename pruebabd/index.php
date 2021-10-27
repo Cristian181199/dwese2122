@@ -92,8 +92,9 @@
                                 <input type="hidden" name="id" value="<?= $fila['id'] ?>">
                                 <button type="submit">Borrar</button>
                             </form>
-                            <form action="crear.php" method="GET">
-                                <button type="submit">Crear</button>
+                            <form action="modificar.php" method="GET">
+                                <input type="hidden" name="id" value="<?= $fila['id'] ?>">
+                                <button type="submit">Modificar</button>
                             </form>
                         </td>
                     </tr>
@@ -105,6 +106,10 @@
                 </td>
             </tfoot>
         </table>
+    </div>
+
+    <div>
+        <button><a href="crear.php">Insertar un nuevo empleado</a></button>
     </div>
 </body>
 
