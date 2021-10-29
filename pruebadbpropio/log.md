@@ -11,6 +11,7 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
 - index.php
 - register.php
 - login.php
+- logout.php
 - emple
     - index.php
     - delete.php
@@ -23,18 +24,37 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
     - update.php
 - comunes
     - auxiliar.php
+    - style.css
 - prueba.sql
 
-## Navbar en home con botones
+## Home
 
-- Se ha creado el navbar
+- Se ha hecho ***session_start()*** al principio del todo.
 
-- Botones register y login en navbar
+- Se ha creado el navbar y se ha metido en una funcion.
 
-- Estilo para alinear a la derecha los botones
+- Se ha enlazado la hoja de estilos.
 
-- Se ha hecho ***session_start()*** al principio del todo
+- Se ha llamado a ***'./comunes/auxiliar.php'***
 
 ## Auxiliar
 
-- Funcion conectar() que devuelve la conexion con la base de datos.
+- Funcion ***conectar()*** que devuelve la conexion con la base de datos.
+
+- Funcion ***logueado()*** comprueba si el usuario esta logueado o no.
+
+- Funcion ***mostrar_navbar()*** muestra el navbar dependiendo si esta logueado o no.
+
+- Funcion ***filtrar_entrada(string $param, string $metodo = INPUT_POST)*** comprueba si isset una variable que recoge mediante GET o POST (por defecto recoge por POST) y ademas la trimea.
+
+- Funcion ***mostrar_error(array $error, string $par)*** muestra los errores donde yo quiera que se muestren, para ello se le pasa la clave del array.
+
+- Funcion ***hh($cadena)*** para evitar el XXS (Cross-site scripting) se utiliza cuando se quiere mostrar informacion que viene de fuera del programa.
+
+## Style
+
+- Se ha alineado las cosas de navbar a la derecha con flexbox.
+
+- Se ha dado color rojo a los errores para cuando se muestren.
+
+***30/10/21***
