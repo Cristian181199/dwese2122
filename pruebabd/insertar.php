@@ -1,13 +1,12 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertar un nuevo empleado</title>
 </head>
-
 <body>
     <?php
     require 'auxiliar.php';
@@ -47,10 +46,8 @@
         }
     }
 
-    if (
-        isset($nombre, $fecha_alt, $salario, $depart_id)
-        && empty($error)
-    ) {
+    if (isset($nombre, $fecha_alt, $salario, $depart_id)
+        && empty($error)) {
         $sent = $pdo->prepare(
             'INSERT INTO emple (nombre, fecha_alt, salario, depart_id)
                 VALUES (:nombre, :fecha_alt, :salario, :depart_id)'
@@ -67,6 +64,8 @@
         return;
     }
 
+    cabecera();
+
     mostrar_formulario(
         compact(
             'nombre',
@@ -78,5 +77,4 @@
     );
     ?>
 </body>
-
 </html>
