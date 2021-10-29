@@ -1,0 +1,9 @@
+#navbar {
+    display: flex;
+    align-items: right;
+    justify-content: right;
+}
+
+#error {
+    color: red;
+}

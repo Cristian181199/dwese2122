@@ -34,3 +34,7 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
 - Estilo para alinear a la derecha los botones
 
 - Se ha hecho ***session_start()*** al principio del todo
+
+## Auxiliar
+
+- Funcion conectar() que devuelve la conexion con la base de datos.
