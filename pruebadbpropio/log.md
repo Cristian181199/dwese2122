@@ -13,18 +13,18 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
 - login.php
 - logout.php
 - emple
-    - index.php
-    - delete.php
-    - create.php
-    - update.php
+  - index.php
+  - delete.php
+  - create.php
+  - update.php
 - depart
-    - index.php
-    - delete.php
-    - create.php
-    - update.php
+  - index.php
+  - delete.php
+  - create.php
+  - update.php
 - comunes
-    - auxiliar.php
-    - style.css
+  - auxiliar.php
+  - style.css
 - prueba.sql
 
 ## Home
@@ -51,6 +51,12 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
 
 - Funcion ***hh($cadena)*** para evitar el XXS (Cross-site scripting) se utiliza cuando se quiere mostrar informacion que viene de fuera del programa.
 
+## Login
+
+- Formulario.
+
+- Comprobaciones de si existe el usuario, que el nombre no puede ser vacio.. etc.
+
 ## Style
 
 - Se ha alineado las cosas de navbar a la derecha con flexbox.
@@ -58,3 +64,23 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
 - Se ha dado color rojo a los errores para cuando se muestren.
 
 ***30/10/21***
+
+## Register
+
+- Formulario.
+
+- Recoger datos.
+
+- Validar datos y trimearlo.
+
+- Pintar errores.
+
+- FALTA REGISTRAR EL USUARIO.
+
+## Auxiliar
+
+- Modificado funcion ***mostrar_navbar()*** para que no muestre mensajes adicionales y el id para el estilo.
+
+## Style
+
+- id's diferentes para el navbar dependiendo si el usuario esta logueado o no.

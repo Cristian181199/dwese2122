@@ -18,21 +18,22 @@ function mostrar_navbar()
 { ?>
         <?php if ($login = logueado()): ?>
 
-        <div id="navbar">
+        <div id="navbarlogin">
+            <div>
+                <button type="submit"><a href="/emple/index.php">Empleados</a></button>
+                <button type="submit"><a href="/depart/index.php">Departamentos</a></button>
+            </div>
             <div>
                 <?= $login['username'] ?>
                 <button type="submit"><a href="index.php">Home</a></button>
                 <button type="submit"><a href="logout.php">Logout</a></button>
-
             </div>
         </div>
 
         <hr>
-
-        <h3>Buenas <?= $login['username'] ?> Todo bien?</h3>
-
+        
         <?php else : ?>
-        <div id="navbar">
+        <div id="navbarlogout">
             <div>
                 <button type="submit"><a href="index.php">Home</a></button>
                 <button type="submit"><a href="register.php">Register</a></button>
@@ -41,8 +42,6 @@ function mostrar_navbar()
         </div>
 
         <hr>
-
-        <h3>Registrate o inicia sesion para poder ver los departamentos y empleados.</h3>
 
         <?php endif ?>
     <?php

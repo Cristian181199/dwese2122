@@ -1,7 +1,14 @@
-#navbar {
+#navbarlogout {
     display: flex;
-    align-items: right;
-    justify-content: right;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+
+#navbarlogin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #error {

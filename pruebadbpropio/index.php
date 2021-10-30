@@ -17,6 +17,16 @@
     include './comunes/auxiliar.php';
     mostrar_navbar();
     ?>
+
+    <?php if (logueado()) :?>
+
+        <h3>Buenas <?= $login['username'] ?> Todo bien?</h3>
+
+    <?php else : ?>
+
+        <h3>Registrate o inicia sesion para poder ver los departamentos y empleados.</h3>
+
+    <?php endif ?>
 </body>
 
 </html>
