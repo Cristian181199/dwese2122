@@ -84,3 +84,19 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
 ## Style
 
 - id's diferentes para el navbar dependiendo si el usuario esta logueado o no.
+
+***30/10/21***
+
+## Index
+
+- Comprobar si estaba logueado no hacia ***login=logueado()*** 
+
+## Register
+
+- Ya se meten los datos en la base de datos.
+  
+- Crea variable flash (1 turno) y redirecciona a login para iniciar sesion.
+
+## Login
+
+- Comprueba si existe la variable flash y si existe muestra por un simple echo.
