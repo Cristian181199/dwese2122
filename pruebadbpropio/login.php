@@ -53,6 +53,12 @@
         }
     }
 
+    if (isset($_SESSION['flash_register'])) {
+        $mensaje = $_SESSION['flash_register'];
+        unset($_SESSION['flash_register']);
+        echo $mensaje;
+    }
+
     ?>
 
     <h3>Inicia sesion</h3>

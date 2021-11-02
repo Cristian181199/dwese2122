@@ -50,6 +50,20 @@
             // el usuario no existe
             echo 'el usuario no existe';
             // lo metemos en la base de datos
+            $sent2 = $pdo->prepare('INSERT INTO usuarios(username, password)
+                           VALUES (:username, :password)');
+            // Metodo bindValue, se puede resumir en 1 linea con el execute.
+            $sent2->bindValue(':username', $username, PDO::PARAM_STR);
+            $sent2->bindValue(':password', password_hash($password, PASSWORD_BCRYPT), PDO::PARAM_STR);
+            $sent2->execute();
+            /*1 sola linea con execute
+            $sent->execute(':username' => $username,
+                           ':password' => password_hash($password, PASSWORD_BCRYPT));*/
+            if ($sent2->rowCount() === 1) {
+                $_SESSION['flash_register'] = 'Se ha registrado correctamente, inicie sesion';
+                header('Location: login.php');
+                return;
+            }
         } else {
             //error, el nombre de usuario ya existe
             $error['username'] = 'El nombre de usuario no esta disponible.';

@@ -18,7 +18,7 @@
     mostrar_navbar();
     ?>
 
-    <?php if (logueado()) :?>
+    <?php if ($login = logueado()) :?>
 
         <h3>Buenas <?= $login['username'] ?> Todo bien?</h3>
 
