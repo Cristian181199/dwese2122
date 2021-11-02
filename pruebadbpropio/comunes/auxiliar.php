@@ -26,7 +26,7 @@ function mostrar_navbar()
             <div>
                 <?= $login['username'] ?>
                 <button type="submit"><a href="index.php">Home</a></button>
-                <button type="submit"><a href="logout.php">Logout</a></button>
+                <button type="submit"><a href="/logout.php">Logout</a></button>
             </div>
         </div>
 

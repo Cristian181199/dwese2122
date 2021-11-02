@@ -100,3 +100,17 @@ Estos directorios o archivos pueden cambiar cuando meta las cookies / sesiones.
 ## Login
 
 - Comprueba si existe la variable flash y si existe muestra por un simple echo.
+
+## Index de depart
+
+- Muestra los departamentos existentes y cuenta cuantos departamentos tiene.
+
+- Boton para borrar departamentos.
+
+## Borrar de depart
+
+- Pregunta si desea borrar el departamento
+
+- No comprueba si el departamento existe, pero deberia.
+
+- Si en el index le das a borrar un departamento y este tiene asociado empleados, muestra un mensaje flash que tiene duracion de 1 turno.
