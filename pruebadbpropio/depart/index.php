@@ -58,6 +58,10 @@
         </tfoot>
     </table>
 
+    <div>
+        <button><a href="insertar.php">Insertar un nuevo departamento</a></button>
+    </div>
+
     <?php
         if (isset($_SESSION['flash_delete'])) {
             $mensaje = $_SESSION['flash_delete'];
