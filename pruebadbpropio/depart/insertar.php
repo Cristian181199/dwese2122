@@ -29,17 +29,17 @@
             }
         }
 
-        if (isset($localidad)) {
-            if ($localidad === '') {
-                $localidad = null;
-            }
-        }
-
-        
-
-        if (isset($denominacion, $localidad)) {
+        if (isset($denominacion, $localidad) && empty($error)) {
             $pdo = conectar();
             //Insertar los datos en depart.
+            $sent = $pdo->prepare('INSERT INTO depart (denominacion, localidad)
+                                        VALUES (:denominacion, :localidad)');
+            if ($sent->execute([':denominacion' => $denominacion, 
+                                ':localidad' => $localidad]) || $sent->rowCount() !== 1) {
+                // Ha habido un problem
+            }
+            header('Location: /depart/index.php');
+            return;
         }
     ?>
 
